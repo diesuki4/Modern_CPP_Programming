@@ -5,7 +5,7 @@ using namespace std;
 
 /*
  * auto 키워드는 컴파일러가 자동으로 자료형을 지정하는 대신,
- * 
+ *
  * 초깃값이 꼭 필요하다.
  */
 
@@ -15,6 +15,12 @@ void print(vector<int>& v)
     for (vector<int>::iterator it = v.begin(); it != v.end(); ++it)
         cout << *it << " ";
     cout << endl;
+}
+
+// 함수의 반환 형에도 auto 를 쓸 수 있다.
+auto getNum()
+{
+    return 5;
 }
 
 int main(int argc, char* argv[])
@@ -54,6 +60,22 @@ int main(int argc, char* argv[])
         e = 0;
 
     print(v);
+
+    auto str = "Hello World !!";
+    auto d = 1.0;
+    auto f = 3.F;
+    auto c = 'c';
+    auto i1 = 3, i2 = 30;
+
+    // 다음과 같이 타입을 알 수 있다.
+    cout << typeid(str).name() << endl;
+    cout << typeid(d).name() << endl;
+    cout << typeid(f).name() << endl;
+    cout << typeid(c).name() << endl << endl;
+    cout << typeid(i1).name() << endl;
+    cout << typeid(i2).name() << endl;
+    cout << boolalpha << (typeid(i1) == typeid(i2)) << endl;
+    cout << boolalpha << (typeid(d) == typeid(f)) << endl;
 
     return 0;
 }
