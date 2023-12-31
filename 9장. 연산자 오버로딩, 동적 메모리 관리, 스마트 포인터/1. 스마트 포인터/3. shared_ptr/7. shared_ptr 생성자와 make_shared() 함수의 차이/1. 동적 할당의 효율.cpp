@@ -20,8 +20,10 @@ int main(int argc, char* argv[])
      * 생성할 때 동적 할당된 포인터를 전달한다.
      *
      * Widget 객체를 생성할 때 1번, Control Block 을 생성할 때 1번
-     *
      * 총 2번의 Heap allocation, 2번의 deallocation 이 발생한다.
+     * 
+     * 이때 두 공간이 따로 할당되므로, 사이에 빈 공간이 생겨
+     * 메모리 단편화가 발생할 수 있다.
      */
     shared_ptr<Widget> shptr1(new Widget(5));
 
@@ -32,6 +34,8 @@ int main(int argc, char* argv[])
      *
      * Heap allocation, deallocation 을 1번씩으로 줄일 수 있는
      * 성능상 이점이 있다.
+     *
+     * 또한 메모리 블록이 하나이므로, 메모리 단편화를 줄일 수 있다.
      *
      * Reference count, Weak count 가 모두 1이 되어야 해제되는
      * Control Block 의 특성 때문에
