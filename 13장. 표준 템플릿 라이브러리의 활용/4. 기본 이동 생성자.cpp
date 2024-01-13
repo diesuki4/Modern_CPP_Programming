@@ -29,7 +29,6 @@ public:
      *
      * Widget(Widget&& rhs) : name(move(rhs.name))
      * {
-     *
      * }
      */
     const string& getName() const { return name; }
