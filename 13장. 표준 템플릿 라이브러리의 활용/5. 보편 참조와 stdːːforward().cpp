@@ -10,9 +10,10 @@ class Widget
     int data;
 
 public:
-    explicit Widget(int data) : data(data)     { cout << "생성자 "      << data << endl; }
-    Widget(const Widget& rhs) : data(rhs.data) { cout << "복사 생성자 " << data << endl; }
-    Widget(Widget&& rhs)      : data(rhs.data) { cout << "이동 생성자 " << data << endl; }
+    explicit Widget(int data) : data(data)           { cout <<   "생성자 "    << data << endl; }
+    Widget(const Widget& rhs) : data(rhs.data)       { cout << "이동 생성자 " << data << endl; }
+    Widget(Widget&& rhs)      : data(move(rhs.data)) { cout << "복사 생성자 " << data << endl; }
+    ~Widget()                                        { cout <<   "소멸자 "    << data << endl; }
 };
 
 void Func(Widget& w)       { cout << "lvalue 레퍼런스" << endl; }
@@ -72,7 +73,7 @@ int main(int argc, char* argv[])
 
     Func(w);
     Func(cw);
-    Func(Widget(3));
+    Func(Widget(3));   // 임시 객체의 생명 주기는 전달 받는 쪽에서 관리된다.
     cout << endl;
 
     Wrapper1(w);
