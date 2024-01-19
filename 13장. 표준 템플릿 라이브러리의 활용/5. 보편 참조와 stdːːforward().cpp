@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
 
     Func(w);
     Func(cw);
-    Func(Widget(3));   // 임시 객체의 생명 주기는 전달 받는 쪽에서 관리된다.
+    Func(Widget(3));   // 임시 객체는 이 구문이 끝나면 소멸한다.
     cout << endl;
 
     Wrapper1(w);
